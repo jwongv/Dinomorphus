@@ -1,0 +1,132 @@
+<html>
+	<head>
+		<title>Dinomorphus Prototype</title>
+		
+		<script type="text/javascript" src="../engine/gl-matrix.js"></script>
+		
+		<script src="Box2d.js"></script>
+		<script src="brine.js"></script>
+		<script src="player.js"></script>
+		<script src="level.js"></script>
+		<script src="interface.js"></script>
+		<script src="collision.js"></script>
+		<script src="initialize.js"></script>
+		<script src="screen.js"></script>
+
+		
+		<script>
+			//Sets the canvas color when clearing, set the last value to 0 if want a transparent canvas
+			clearColor = [1,1,1,1];
+			
+			use2D = true;
+			
+			//Ease of access to B2D classes
+			var	b2Vec2 = Box2D.Common.Math.b2Vec2
+				,	b2BodyDef = Box2D.Dynamics.b2BodyDef
+				,	b2Body = Box2D.Dynamics.b2Body
+				,	b2FixtureDef = Box2D.Dynamics.b2FixtureDef
+				,	b2Fixture = Box2D.Dynamics.b2Fixture
+				,	b2World = Box2D.Dynamics.b2World
+				,	b2MassData = Box2D.Collision.Shapes.b2MassData
+				,	b2PolygonShape = Box2D.Collision.Shapes.b2PolygonShape
+				,	b2ContactListener = Box2D.Dynamics.b2ContactListener
+				,	b2CircleShape = Box2D.Collision.Shapes.b2CircleShape,
+					b2DebugDraw = Box2D.Dynamics.b2DebugDraw
+            ;
+            
+          
+			var physics;
+			var SCALE = 30; //Scale for the world
+			
+			var playerX = 300 / SCALE;
+			var playerY = 569 / SCALE;
+			
+			
+		    var offSetX = 0;
+			var offSetY = 0;
+			
+							
+
+/*
+			world.init = function(){
+				//Initialize Box2D world
+				physics = new b2World(new b2Vec2(0,20), false);
+				
+				var debugDraw = new b2DebugDraw();
+				debugDraw.SetSprite(ctx);
+				debugDraw.SetDrawScale(SCALE);
+				debugDraw.SetFillAlpha(1.0);
+				debugDraw.SetLineThickness(5.0);
+				debugDraw.SetFlags(b2DebugDraw.e_shapeBit | b2DebugDraw.e_jointBit);
+				physics.SetDebugDraw(debugDraw);
+				
+				//add the level and player
+				level = new level();
+				level.createLevel0();
+
+				newplayer = new player();
+				userinterface = new userinterface();
+//				enemies = new enemy();
+//				enemies.spawn();
+//				star = new star();
+//				star.spawn();
+				collisionmanager = new collision();
+				collisionmanager.collisionhandler();
+			}
+			
+			world.update = function(d){
+				
+				//will put all the player functions in one big function later
+				//level 1
+				newplayer.move();
+				level.move();
+				level.kill();
+				level.killstar();
+				level.meteorSpawn2();
+				level.meteorSpeed();
+				level.killbreakable();
+				level.killmeteor();
+				userinterface.updateall();
+				
+				//sprite changing functions. will combine later into a different function
+				newplayer.raptor();
+				newplayer.pachy();
+				newplayer.pterodactyl();
+				newplayer.tiny();
+			    //playerlives=new lives();
+				physics.Step(1/60, 10, 10);
+				physics.ClearForces();
+							
+				this.__proto__.update.call(this, d);
+			}
+			
+			world.draw = function(ctx){
+				
+				
+				
+				ctx.save();
+				//Draw the B2D debug
+				ctx.clearRect(-newplayer.newoffsetx, 0, canvas.width, canvas.height);	   
+	            ctx.translate(-newplayer.newoffsetx, 0);
+				physics.DrawDebugData();
+							
+				//Set the alpha to half so we can see the debug drawing
+				this.alpha = .5;
+				//Call the default draw
+				this.__proto__.draw.call(this,ctx);
+     			ctx.fillStyle="black";
+				ctx.fillText("Lives: "+newplayer.lives,(newplayer.sprite.x-270),22); 
+				ctx.fillText("Score: "+newplayer.score,(newplayer.sprite.x+430),85); 
+				ctx.restore();
+
+			}
+*/
+		</script>
+	</head>
+	<body onLoad="initGame('canvas');">
+		<center>
+		<canvas id="canvas" width="1000" height="600" style="border: solid black;>.
+		</center>
+		<div id="console"></div>
+	</body>
+</html>
